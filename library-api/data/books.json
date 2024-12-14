@@ -1,0 +1,15 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "publishedYear": 1925,
+    "isbn": "123456789",
+    "genre": "Fiction"
+  },
+  {
+    "title": "12 Rules for life - updated",
+    "publishedYear": 2018,
+    "isbn": "2222222222",
+    "genre": "self-help"
+  }
+]

@@ -1,0 +1,45 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Library Management API",
+      "description": "API for managing a library collection"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/books": {
+        "get": {
+          "summary": "Get all books",
+          "responses": { "200": { "description": "List of books" } }
+        },
+        "post": {
+          "summary": "Add a new book",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "book",
+              "description": "Book details",
+              "required": true,
+              "schema": { "$ref": "#/definitions/Book" }
+            }
+          ],
+          "responses": { "201": { "description": "Book added successfully" } }
+        }
+      }
+    },
+    "definitions": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "author": { "type": "string" },
+          "publishedYear": { "type": "integer" },
+          "isbn": { "type": "string" },
+          "genre": { "type": "string" }
+        }
+      }
+    }
+  }
+  
