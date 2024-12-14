@@ -18,10 +18,10 @@ docker build -t library-api .
 Once the image is built, start the container using this PowerShell command:
 
 ```powershell
-docker run -p 3000:3000 --name library-api-container library-api
+docker run -p 4000:4000 --name library-api-container library-api
 ```
 
-- `-p 3000:3000`: Maps port 3000 on your computer to port 3000 in the container.
+- `-p 4000:4000`: Maps port 4000 on your computer to port 4000 in the container.
 - `--name library-api-container`: Assigns a name to the running container.
 - `library-api`: Refers to the Docker image you built.
 
@@ -32,7 +32,7 @@ docker run -p 3000:3000 --name library-api-container library-api
 After starting the container, verify that the API is running by visiting:
 
 ```
-http://localhost:3000
+http://localhost:4000
 ```
 
 ---
@@ -46,7 +46,7 @@ Swagger provides an interactive UI to test and explore the API endpoints.
 Once the Docker container is running, access the Swagger API documentation by visiting the following route:
 
 ```
-http://localhost:3000/api-docs
+http://localhost:4000/api-docs
 ```
 
 ---
@@ -60,90 +60,24 @@ The following endpoints are available in the Library Management API:
 | Add a new book           | POST       | `/books`            | Adds a new book to the library.       |
 | List all books           | GET        | `/books`            | Returns a list of all books.          |
 | Search for books         | GET        | `/books?query=...`  | Filters books by author, year, genre. |
-| Update book details      | PUT        | `/books/:isbn`      | Updates details of a specific book.   |
-| Delete a book by ISBN    | DELETE     | `/books/:isbn`      | Deletes a specific book by ISBN.      |
+| Update book details      | PUT        | `/books/isbn`      | Updates details of a specific book.   |
+| Delete a book by ISBN    | DELETE     | `/books/isbn`      | Deletes a specific book by ISBN.      |
 
-- **Base URL**: `http://localhost:3000`
+- **Base URL**: `http://localhost:4000`
 
 ---
 
-## **Example Requests**
+## **Example Request**
 
 ### Add a New Book (POST `/books`)
 
 **Request Body** (JSON):
 ```json
 {
-  "title": "Sample Book",
-  "author": "John Doe",
-  "publishedYear": 2023,
-  "isbn": "123-4567890123",
-  "genre": "Fiction"
+  "title": "Atomic Habits",
+  "author": "James Clear",
+  "publishedYear": 2018,
+  "isbn": "333333333",
+  "genre": "self-help"
 }
 ```
-
-### Search Books (GET `http://localhost:3000/books/James-Clear`)
-
-**Request**:
-```
-http://localhost:3000/books/James-Clear
-```
-
----
-
-## **Stopping and Restarting the Container**
-
-### Stop the Container
-To stop the running Docker container, use the following PowerShell command:
-
-```powershell
-docker stop library-api-container
-```
-
----
-
-### Restart the Container
-To restart the container, run:
-
-```powershell
-docker start library-api-container
-```
-
----
-
-### Remove the Container
-If you want to remove the container completely, run:
-
-```powershell
-docker rm library-api-container
-```
-
----
-
-## **Troubleshooting**
-
-### Port Conflict (EADDRINUSE)
-If port 3000 is already in use, you can run the container on a different port:
-
-```powershell
-docker run -p 4000:3000 --name library-api-container library-api
-```
-
-Now the API will be accessible at `http://localhost:4000`.
-
-### Check Docker Logs
-To view logs from the running Docker container:
-
-```powershell
-docker logs library-api-container
-```
-
----
-
-## **Conclusion**
-
-By following these instructions, you can:
-1. Build and run the Library Management API using Docker.
-2. Access the interactive Swagger documentation to test endpoints.
-
-Feel free to contribute or report any issues to improve this project!
