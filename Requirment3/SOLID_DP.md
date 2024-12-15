@@ -5,7 +5,7 @@
 
 ---
 
-### **2. Open-Closed Principle: ** 
+### **2. Open-Closed Principle:** 
 
 ### **Application in the Pizza Ordering System**
     Toppings can be added without modifying Base pizza class.
